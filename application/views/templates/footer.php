@@ -32,7 +32,7 @@
     <div class="modal-body">Pilih "Logout" jika sudah selesai.</div>
     <div class="modal-footer">
       <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-      <a class="btn btn-primary" href="<?= base_url('auth/logout');?>">Logout</a>
+      <a class="btn btn-primary" href="<?= base_url('Auth/logout');?>">Logout</a>
     </div>
   </div>
 </div>
@@ -47,7 +47,24 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/dist/sweetalert2.all.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/dist/myscript.js"></script>
+<script src="<?php echo base_url('assets/login/js/toastr.min.js')?>"></script>
 
 </body>
 
 </html>
+
+
+<script>
+  $('.custom-file-input').on('change', function(){
+    let fileName = $(this).val().split('\\').pop();
+    // alert(fileName);
+    $(this).next('.custom-file-label').addClass("selected").html(fileName);
+  });
+
+  <?php if ($this->session->flashdata('psn')) { ?>
+        toastr.error("<?php echo $this->session->flashdata('psn');?>");
+    <?php } ?>
+</script>
+

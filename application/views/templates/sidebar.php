@@ -2,7 +2,7 @@
  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('User');?>">
       <div class="sidebar-brand-icon">
           <i class="far fa-building"></i>
       </div>
@@ -12,8 +12,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Nama menu -->
-
+    <!-- QUERY MENU -->
     <?php
       $role_id = $this->session->userdata('level_id');
       $query_menu = "SELECT user_menu.id_menu, user_menu.menu
@@ -57,8 +56,9 @@
       <hr class="sidebar-divider mt-3">
     <?php endforeach; ?>
 
+    <!--LOGOUT -->
     <li class="nav-item">
-      <a class="nav-link" href="<?= base_url('auth/logout');?>" data-toggle="modal" data-target="#logoutModal">
+      <a class="nav-link" href="<?= base_url('Auth/logout');?>" data-toggle="modal" data-target="#logoutModal">
           <i class="fas fa-sign-out-alt"></i>
           <span>Logout</span></a>
     </li>

@@ -54,6 +54,31 @@
 
 <!-- Page level custom scripts -->
 <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
+<script src="<?= base_url('assets/'); ?>js/dist/sweetalert2.all.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/dist/myscript.js"></script>
+
+<script>
+  $('.form-check-input').on('click', function(){
+    
+    // var a = $('#levelcheck').data('menu');
+    // console.log($('#levelcheck').attr('data-menu'))
+
+    const menuId = $(this).data('menu');
+    const roleId = $(this).data('role');
+
+    $.ajax({
+        url: "<?= base_url('Menu/changeAccess'); ?>",
+        type: 'post',
+        data: {
+          menuId: menuId,
+          roleId: roleId
+        },
+        success: function() {
+          document.location.href = "<?= base_url('Menu/accessLevel/'); ?>" + roleId
+        }
+    });
+  });
+</script>
 
 <script>
   $(document).ready( function () {

@@ -10,13 +10,20 @@
             $role_id = $ci->session->userdata('level_id');
             $menu = $ci->uri->segment(1);
 
+            // echo $menu;
+
             $queryAccess = $ci->db->get_where('user_menu', ['menu' => $menu])->row_array();
             $menu_id = $queryAccess['id_menu'];
+
+            // var_dump($queryAccess);
+            // echo $queryAccess;
+            // echo $menu_id;
 
             $userAccess = $ci->db->get_where('user_access_menu', [
                 'level_id' => $role_id, 
                 'menu_id' => $menu_id
             ]);
+            
             
 
             // $u = $userAccess->num_rows();
