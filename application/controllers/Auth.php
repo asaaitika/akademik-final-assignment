@@ -48,8 +48,10 @@ class Auth extends CI_Controller {
 				];
 					$this->session->set_userdata($data);
 					if($user['level_id'] == 1){
+						helper_log("login", "Masuk Ke Dalam Aplikasi");
 						redirect('Admin');
 					}else{
+						helper_log("login", "Masuk Ke Dalam Aplikasi");
 						redirect('User');
 					}
 					
@@ -133,8 +135,11 @@ class Auth extends CI_Controller {
 
 	// BEGIN LOGOUT
 	public function logout(){
-        $this->session->unset_userdata('email');
+		helper_log("logout", "Keluar Dari Aplikasi");
+		
+		$this->session->unset_userdata('email');
 		$this->session->unset_userdata('level_id');
+		
 		redirect('Auth');
 	}
 	// END OF LOGOUT

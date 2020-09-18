@@ -55,6 +55,13 @@
 
 </html>
 
+<script>  
+  $(document).ready(function(){
+      $( '#nisn' ).mask('000000000000');
+      $( '#nis' ).mask('000000');
+      $( '#nohp' ).mask('0000-0000-0000');
+  });
+</script>
 
 <script>
   $('.custom-file-input').on('change', function(){

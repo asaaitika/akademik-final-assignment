@@ -29,6 +29,7 @@ class Settings extends CI_Controller {
         else{
             $this->db->insert('user_menu', ['menu' => $this->input->post('namemenu')]);
             $this->session->set_flashdata('msg','Berhasil Ditambahkan');
+            helper_log("add", "Menambahkan Data Menu");
 
             redirect('Settings');
         }
@@ -37,6 +38,7 @@ class Settings extends CI_Controller {
     public function deleteMenu($id){
         $this->Settings_model->deleteDataMenu($id);
         $this->session->set_flashdata('msg','Berhasil Dihapus');
+        helper_log("delete", "Menghapus Data Menu");
         redirect('Settings');
     }
 
@@ -45,6 +47,7 @@ class Settings extends CI_Controller {
 
         $this->Settings_model->updateDataMenu($id, $data);
         $this->session->set_flashdata('msg','Berhasil Diubah');
+        helper_log("edit", "Mengubah Data Menu");
         redirect('Settings');
     }
     // END OF DATA MENU
@@ -60,7 +63,7 @@ class Settings extends CI_Controller {
         $this->form_validation->set_rules('title', 'Title', 'required');
         $this->form_validation->set_rules('menu_id', 'Menu', 'required');
         $this->form_validation->set_rules('url', 'URL', 'required');
-        $this->form_validation->set_rules('icon', 'Icon', 'required');
+        // $this->form_validation->set_rules('icon', 'Icon', 'required');
         
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header-datatables', $data);
@@ -70,13 +73,15 @@ class Settings extends CI_Controller {
             $this->load->view('templates/footer-datatables');
         }else{
             $active = $this->input->post('is_active');
+            $simbolValues = $_POST['simbol'];
+            
             if ($active == '') {
                 $a = '0';
                 $data = [
                             'title' => $this->input->post('title'),
                             'menu_id' => $this->input->post('menu_id'),
                             'url' => $this->input->post('url'),
-                            'icon' => $this->input->post('icon'),
+                            'icon' => $simbolValues[0],
                             'is_active' => $a,
             ];
             }else{
@@ -84,14 +89,17 @@ class Settings extends CI_Controller {
                             'title' => $this->input->post('title'),
                             'menu_id' => $this->input->post('menu_id'),
                             'url' => $this->input->post('url'),
-                            'icon' => $this->input->post('icon'),
+                            'icon' => $simbolValues[0],
                             'is_active' => $this->input->post('is_active'),
                  ];
             }
+            // print_r($data);
             $this->db->insert('user_sub_menu', $data);
             $this->session->set_flashdata('msg','Berhasil Ditambahkan');
+            helper_log("add", "Menambahkan Data Sub Menu");
 
             redirect('Settings/submenu');
+            
         }
     }
 
@@ -109,7 +117,7 @@ class Settings extends CI_Controller {
                             'title' => $this->input->post('title'),
                             'menu_id' => $this->input->post('menu_id'),
                             'url' => $this->input->post('url'),
-                            'icon' => implode(',',$this->input->post('icon')),
+                            'icon' => implode(',',$this->input->post('simbol')),
                             'is_active' => $a,
             ];
             }else{
@@ -117,13 +125,14 @@ class Settings extends CI_Controller {
                             'title' => $this->input->post('title'),
                             'menu_id' => $this->input->post('menu_id'),
                             'url' => $this->input->post('url'),
-                            'icon' => implode(',',$this->input->post('icon')),
+                            'icon' => implode(',',$this->input->post('simbol')),
                             'is_active' => $this->input->post('is_active'),
                     ];
             }
 
         $this->Settings_model->updateDataSubMenu($id, $data);
         $this->session->set_flashdata('msg','Berhasil Diubah');
+        helper_log("edit", "Mengubah Data Sub Menu");
 
         redirect('Settings/submenu');
     }
@@ -147,6 +156,7 @@ class Settings extends CI_Controller {
         else{
             $this->db->insert('user_level', ['level_name' => $this->input->post('levelname')]);
             $this->session->set_flashdata('msg','Berhasil Ditambahkan');
+            helper_log("add", "Menambahkan Data Level");
 
             redirect('Settings/level');
         }
@@ -186,11 +196,14 @@ class Settings extends CI_Controller {
         }
 
         $this->session->set_flashdata('msg','Berhasil diubah!');
+        helper_log("edit", "Mengubah Akses Level");
     }
 
     public function deleteLevel($id){
         $this->Settings_model->deleteDataLevel($id);
         $this->session->set_flashdata('msg','Berhasil Dihapus');
+        helper_log("delete", "Menghapus Data Level");
+
         redirect('Settings/level');
     }
 
@@ -199,6 +212,8 @@ class Settings extends CI_Controller {
 
         $this->Settings_model->updateDataLevel($id, $data);
         $this->session->set_flashdata('msg','Berhasil Diubah');
+        helper_log("edit", "Mengubah Data Level");
+
         redirect('Settings/level');
     }
     // END OF DATA LEVEL
@@ -220,17 +235,66 @@ class Settings extends CI_Controller {
     public function deleteUsers($id){
         $this->Settings_model->deleteDataUsers($id);
         $this->session->set_flashdata('msg','Berhasil Dihapus');
+        helper_log("delete", "Menghapus Data User");
         redirect('Settings/users');
     }
 
     public function editUsers($id){
+        $data['title'] = 'Edit Data User';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['level'] = $this->db->get('user_level')->result_array();
+        $data['users'] = $this->Settings_model->editDataUsers($id);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar-admin', $data);
+        $this->load->view('templates/topbar-admin', $data);
+        $this->load->view('settings/users/edit-user', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function updateUsers($id){
+        $upload_image = $_FILES['image']['name'];
+        
+        if($upload_image){
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = '2048';
+            $config['upload_path'] = './assets/img/profile';
+            
+            $this->load->library('upload', $config);
+            if($this->upload->do_upload('image')){
+                $old_image = $data['user']['image'];
+                
+                if($old_image != 'default.png'){
+                    unlink(FCPATH . 'assets/img/profile/' . $old_image);
+                }
+                
+                $new_image = $this->upload->data('file_name');
+                // var_dump($upload_image);
+                // die;
+                $this->db->set('image', $new_image);
+            }else{
+                echo $this->upload->display_errors();
+            }
+        }
+        
+        $data = [
+                    'name' => $this->input->post('name'),
+                    'email' => $this->input->post('email'),
+                    'level_id' => $this->input->post('level_id'),
+                    'is_active' => $this->input->post('is_active'),
+                    'image' => $new_image,
+                ];
+
         $this->Settings_model->updateDataUsers($id, $data);
         $this->session->set_flashdata('msg','Berhasil Diubah');
+        helper_log("edit", "Mengubah Data User");
+        
         redirect('Settings/users');
     }
 
     public function addUsers(){
-        $data['title'] = 'Form User';
+        $data['title'] = 'Add Data User';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['level'] = $this->db->get('user_level')->result_array();
@@ -296,6 +360,7 @@ class Settings extends CI_Controller {
             }
             $this->db->insert('user', $data);
             $this->session->set_flashdata('msg','Berhasil Ditambahkan');
+            helper_log("add", "Menambahkan Data User");
 
             redirect('Settings/users');
         }

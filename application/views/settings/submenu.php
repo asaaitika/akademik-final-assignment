@@ -73,66 +73,66 @@
                 <form action="<?= base_url('Settings/submenu')?>" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="title" name="title" placeholder="Submenu title" required="">
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Masukkan judul sub menu...">
                         </div>
                         <div class="form-group">
-                            <select name="menu_id" id="menu_id" class="form-control" required>
-                                <option value="">-- Select Menu --</option>
+                            <select name="menu_id" id="menu_id" class="form-control">
+                                <option value="">-- Pilih Menu --</option>
                                 <?php foreach($menu as $m) :?>
                                 <option value="<?= $m['id_menu'] ;?>"><?= $m['menu'] ;?></option>
                                 <?php endforeach ;?>
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="url" name="url" placeholder="URL" required="">
+                            <input type="text" class="form-control" id="url" name="url" placeholder="Masukkan URL...">
                         </div>
                         <div class="form-group">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon1" value="fas fa-fw fa-tachometer-alt" required>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon1" value="fas fa-fw fa-tachometer-alt">
                                 <label class="form-check-label" for="icon1"><i class="fas fa-fw fa-tachometer-alt"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon_" value="fas fa-chalkboard-teacher" required>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon_" value="fas fa-chalkboard-teacher">
                                 <label class="form-check-label" for="icon_"><i class="fas fa-chalkboard-teacher"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon0" value="fas fa-fw fa-id-card" required>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon0" value="fas fa-fw fa-id-card">
                                 <label class="form-check-label" for="icon0"><i class="fas fa-fw fa-id-card"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon2" value="fas fa-fw fa-user" required>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon2" value="fas fa-fw fa-user">
                                 <label class="form-check-label" for="icon2"><i class="fas fa-fw fa-user"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon3" value="fas fa-fw fa-clipboard-list" required>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon3" value="fas fa-fw fa-clipboard-list">
                                 <label class="form-check-label" for="icon3"><i class="fas fa-fw fa-clipboard-list"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon4" value="fas fa-fw fa-folder" required>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon4" value="fas fa-fw fa-folder">
                                 <label class="form-check-label" for="icon4"><i class="fas fa-fw fa-folder"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon5" value="fas fa-fw fa-folder-open" required>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon5" value="fas fa-fw fa-folder-open">
                                 <label class="form-check-label" for="icon5"><i class="fas fa-fw fa-folder-open"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon6" value="fas fa-fw fa-list" required>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon6" value="fas fa-fw fa-list">
                                 <label class="form-check-label" for="icon6"><i class="fas fa-fw fa-list"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon7" value="fas fa-fw fa-list-alt" required>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon7" value="fas fa-fw fa-list-alt">
                                 <label class="form-check-label" for="icon7"><i class="fas fa-fw fa-list-alt"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon8" value="fas fa-fw fa-calendar" required>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon8" value="fas fa-fw fa-calendar">
                                 <label class="form-check-label" for="icon8"><i class="fas fa-fw fa-calendar"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon9" value="fas fa-fw fa-level-up-alt" required>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon9" value="fas fa-fw fa-level-up-alt">
                                 <label class="form-check-label" for="icon9"><i class="fas fa-fw fa-level-up-alt"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon10" value="fas fa-fw fa-users" required>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon10" value="fas fa-fw fa-users">
                                 <label class="form-check-label" for="icon10"><i class="fas fa-fw fa-users"></i></label>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>
             </div>
@@ -203,51 +203,51 @@
                         </div>
                         <div class="form-group">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon1" value="fas fa-fw fa-tachometer-alt" <?= $row['icon']=="fas fa-fw fa-tachometer-alt" ? "checked": ""?>>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon1" value="fas fa-fw fa-tachometer-alt" <?= $row['icon']=="fas fa-fw fa-tachometer-alt" ? "checked": ""?>>
                                 <label class="form-check-label" for="icon1"><i class="fas fa-fw fa-tachometer-alt"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon_" value="fas fa-chalkboard-teacher" <?= $row['icon']=="fas fa-chalkboard-teacher" ? "checked": ""?>>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon_" value="fas fa-chalkboard-teacher" <?= $row['icon']=="fas fa-chalkboard-teacher" ? "checked": ""?>>
                                 <label class="form-check-label" for="icon_"><i class="fas fa-chalkboard-teacher"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon0" value="fas fa-fw fa-id-card" <?= $row['icon']=="fas fa-fw fa-id-card" ? "checked": ""?>>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon0" value="fas fa-fw fa-id-card" <?= $row['icon']=="fas fa-fw fa-id-card" ? "checked": ""?>>
                                 <label class="form-check-label" for="icon0"><i class="fas fa-fw fa-id-card"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon2" value="fas fa-fw fa-user" <?= $row['icon']=="fas fa-fw fa-user" ? "checked": ""?>>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon2" value="fas fa-fw fa-user" <?= $row['icon']=="fas fa-fw fa-user" ? "checked": ""?>>
                                 <label class="form-check-label" for="icon2"><i class="fas fa-fw fa-user"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon3" value="fas fa-fw fa-clipboard-list" <?= $row['icon']=="fas fa-fw fa-clipboard-list" ? "checked": ""?>>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon3" value="fas fa-fw fa-clipboard-list" <?= $row['icon']=="fas fa-fw fa-clipboard-list" ? "checked": ""?>>
                                 <label class="form-check-label" for="icon3"><i class="fas fa-fw fa-clipboard-list"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon4" value="fas fa-fw fa-folder" <?= $row['icon']=="fas fa-fw fa-folder" ? "checked": ""?>>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon4" value="fas fa-fw fa-folder" <?= $row['icon']=="fas fa-fw fa-folder" ? "checked": ""?>>
                                 <label class="form-check-label" for="icon4"><i class="fas fa-fw fa-folder"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon5" value="fas fa-fw fa-folder-open" <?= $row['icon']=="fas fa-fw fa-folder-open" ? "checked": ""?>>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon5" value="fas fa-fw fa-folder-open" <?= $row['icon']=="fas fa-fw fa-folder-open" ? "checked": ""?>>
                                 <label class="form-check-label" for="icon5"><i class="fas fa-fw fa-folder-open"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon6" value="fas fa-fw fa-list" <?= $row['icon']=="fas fa-fw fa-list" ? "checked": ""?>>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon6" value="fas fa-fw fa-list" <?= $row['icon']=="fas fa-fw fa-list" ? "checked": ""?>>
                                 <label class="form-check-label" for="icon6"><i class="fas fa-fw fa-list"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon7" value="fas fa-fw fa-list-alt" <?= $row['icon']=="fas fa-fw fa-list-alt" ? "checked": ""?>>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon7" value="fas fa-fw fa-list-alt" <?= $row['icon']=="fas fa-fw fa-list-alt" ? "checked": ""?>>
                                 <label class="form-check-label" for="icon7"><i class="fas fa-fw fa-list-alt"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon8" value="fas fa-fw fa-calendar" <?= $row['icon']=="fas fa-fw fa-calendar" ? "checked": ""?>>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon8" value="fas fa-fw fa-calendar" <?= $row['icon']=="fas fa-fw fa-calendar" ? "checked": ""?>>
                                 <label class="form-check-label" for="icon8"><i class="fas fa-fw fa-calendar"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon9" value="fas fa-fw fa-level-up-alt" <?= $row['icon']=="fas fa-fw fa-level-up-alt" ? "checked": ""?>>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon9" value="fas fa-fw fa-level-up-alt" <?= $row['icon']=="fas fa-fw fa-level-up-alt" ? "checked": ""?>>
                                 <label class="form-check-label" for="icon9"><i class="fas fa-fw fa-level-up-alt"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="icon[]" id="icon10" value="fas fa-fw fa-users" <?= $row['icon']=="fas fa-fw fa-users" ? "checked": ""?>>
+                                <input class="form-check-input" type="radio" name="simbol[]" id="icon10" value="fas fa-fw fa-users" <?= $row['icon']=="fas fa-fw fa-users" ? "checked": ""?>>
                                 <label class="form-check-label" for="icon10"><i class="fas fa-fw fa-users"></i></label>
                             </div>
                         </div>

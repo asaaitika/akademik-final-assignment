@@ -79,8 +79,8 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Login Activity</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">-</div>
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Log Activity</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $data_log; ?></div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -100,6 +100,39 @@
                 <p class="mb-0">Jadi, gunakan sistem ini sesuai prosedur dan tata cara kerja yang sudah ditentukan.</p>
               </div>
             </div>
+            
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Log Activity</h6>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th><center>No</center></th>
+                            <th>Nama</th>
+                            <th>Aktivitas</th>
+                            <th>Waktu</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1; ?>
+                            <?php foreach ($log as $r) : ?>
+                                <tr>
+                                    <th scope="row"><center><?= $i; ?></center></th>
+                                    <td><?= $r['name']; ?></td>
+                                    <td><?= $r['log_desc']; ?></td>
+                                    <td><?= date_format(date_create($r['log_time']),"H:i:s d F Y"); ?></td>
+                                </tr>
+                                <?php $i++; ?>
+                            <?php endforeach ; ?>    
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+              </div>
+            
   
           </div>
           <!-- /.container-fluid -->

@@ -25,7 +25,7 @@ const flashw = $('.flash-dataw').data('flashdata');
 
 if (flashw) {
     Swal.fire(
-        'Data Submenu',
+        'Data Sub Menu',
         flashw,
         'success'
     );
@@ -73,6 +73,51 @@ if (flashn) {
         'success'
     );
 }
+
+// Pesan Data Mapel
+const flashmas = $('.flash-datamas').data('flashdata');
+
+if (flashmas) {
+    Swal.fire(
+        'Data Mata Pelajaran',
+        flashmas,
+        'success'
+    );
+}
+
+//Pesan Data Kelas
+const flashkel = $('.flash-datakel').data('flashdata');
+
+if (flashkel) {
+    Swal.fire(
+        'Data Kelas',
+        flashkel,
+        'success'
+    );
+}
+
+// Pesan Data Takad
+const flashtak = $('.flash-datatak').data('flashdata');
+
+if (flashtak) {
+    Swal.fire(
+        'Data Tahun Akademik',
+        flashtak,
+        'success'
+    );
+}
+
+// Pesan Data PreNil
+const flashpre = $('.flash-datapre').data('flashdata');
+
+if (flashpre) {
+    Swal.fire(
+        'Data Predikat Nilai',
+        flashpre,
+        'success'
+    );
+}
+
 
 // Tombol Konfirmasi Hapus Data
 $('.tbl-hapus').on('click', function (a) {

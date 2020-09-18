@@ -42,7 +42,7 @@
                                     <a href="<?= base_url() ;?>Settings/editUsers/<?= $u['id'] ;?>" class="btn btn-warning btn-circle btn-sm">
                                         <i class="far fa-edit"></i>
                                     </a>
-                                    <a href="<?= base_url('') ;?>Settings/deleteUsers/<?= $u['id'] ;?>" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Yakin?');">
+                                    <a href="<?= base_url('') ;?>Settings/deleteUsers/<?= $u['id'] ;?>" class="btn btn-danger btn-circle btn-sm tbl-hapus">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
                                 </td>

@@ -33,10 +33,10 @@
                                 <th scope="row"><center><?= $i; ?></center></th>
                                 <td><?= $m['menu']; ?></td>
                                 <td>
-                                    <a data-toggle="modal" data-target="#newEditModal<?= $m['id_menu']; ?>" href="<?= base_url('') ;?>menu/editMenu/<?= $m['id_menu'] ;?>" class="btn btn-warning btn-circle btn-sm">
+                                    <a data-toggle="modal" data-target="#newEditModal<?= $m['id_menu']; ?>" href="<?= base_url('') ;?>Settings/editMenu/<?= $m['id_menu'] ;?>" class="btn btn-warning btn-circle btn-sm">
                                         <i class="far fa-edit"></i>
                                     </a>
-                                    <a href="<?= base_url('') ;?>menu/deleteMenu/<?= $m['id_menu'] ;?>" class="btn btn-danger btn-circle btn-sm tbl-hapus">
+                                    <a href="<?= base_url('') ;?>Settings/deleteMenu/<?= $m['id_menu'] ;?>" class="btn btn-danger btn-circle btn-sm tbl-hapus">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
                                 </td>

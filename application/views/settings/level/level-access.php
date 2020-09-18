@@ -42,7 +42,7 @@
                                 <td><?= $m['menu']; ?></td>
                                 <td>
                                     <div class="form-check">
-                                        <input type="checkbox" id="levelcheck" class="form-check-input"
+                                        <input type="checkbox" id="levelcheck" class="form-check-input-lvl"
                                           <?= check_access($role['id_level'], $m['id_menu']) ;?> data-role ="<?= $role['id_level']; ?>" data-menu ="<?= $m['id_menu']; ?>"
                                         >
                                     </div>

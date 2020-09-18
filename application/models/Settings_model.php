@@ -60,10 +60,19 @@ class Settings_model extends CI_Model {
 
   }
   
-
 	public function deleteDataUsers($id){
       $this->db->where('id',$id);
       $this->db->delete('user');
+  }
+
+  public function editDataUsers($id){
+    $query = "SELECT user.*, user_level.level_name
+                  From user JOIN user_level
+                  ON user.level_id = user_level.id_level
+                  where id = $id
+                ";
+    
+    return $this->db->query($query)->result_array();
   }
 
   public function updateDataUsers($id, $data){

@@ -2,7 +2,7 @@
     
         <!-- Begin Main Content -->
         <div class="container-fluid">
-            <div class="flash-datae" data-flashdata="<?php echo $this->session->flashdata('msg'); ?>"></div>
+            <div class="flash-datamas" data-flashdata="<?php echo $this->session->flashdata('msg'); ?>"></div>
                 <?php if ($this->session->flashdata('msg')) : ?>
 
                 <?php endif;?>
@@ -22,24 +22,27 @@
                             <thead>
                             <tr>
                                 <th><center>No</center></th>
-                                <th>Level</th>
+                                <th>Mata Pelajaran</th>
+                                <th>Pengajar</th>
+                                <th>KKM</th>
+                                <th>Jam Pelajaran</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach ($role as $r) : ?>
+                                <?php foreach ($mapel as $m) : ?>
                                     <tr>
                                         <th scope="row"><center><?= $i; ?></center></th>
-                                        <td><?= $r['level_name']; ?></td>
+                                        <td><?= $m['mata_pelajaran']; ?></td>
+                                        <td><?= $m['jam_pelajaran']; ?></td>
+                                        <td><?= $m['kkm']; ?></td>
+                                        <td><?= $m['nama_lengkap']; ?></td>
                                         <td>
-                                            <a href="<?= base_url() ;?>Menu/accessLevel/<?= $r['id_level'] ;?>" class="btn btn-success btn-circle btn-sm">
-                                                <i class="fas fa-lock-open"></i>
-                                            </a>
-                                            <a data-toggle="modal" data-target="#newEditMapelModal<?= $r['id_level']; ?>" href="<?= base_url() ;?>Menu/editLevel/<?= $r['id_level'] ;?>" class="btn btn-warning btn-circle btn-sm">
+                                            <a data-toggle="modal" data-target="#newEditMapelModal<?=  $m['id_mapel']; ?>" href="<?= base_url() ;?>Master/editMapel/<?= $m['id_mapel'] ;?>" class="btn btn-warning btn-circle btn-sm">
                                                 <i class="far fa-edit"></i>
                                             </a>
-                                            <a href="<?= base_url('') ;?>Menu/deleteLevel/<?= $r['id_level'] ;?>" class="btn btn-danger btn-circle btn-sm tbl-hapus" >
+                                            <a href="<?= base_url('') ;?>Master/deleteMapel/<?= $m['id_mapel'] ;?>" class="btn btn-danger btn-circle btn-sm tbl-hapus">
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                         </td>
@@ -65,10 +68,24 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <form action="<?= base_url('menu/level')?>" method="POST">
+                <form action="<?= base_url('Master/mapel')?>" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="levelname" name="levelname" placeholder="Masukkan nama level.." required>
+                            <input type="text" class="form-control" id="mapel" name="mapel" placeholder="Masukkan judul mata pelajaran.." required>
+                        </div>
+                        <div class="form-group">
+                            <select name="guru_id" id="guru_id" class="form-control" required>
+                                <option value="">-- Pilih Pengajar --</option>
+                                <?php foreach($guru as $m) :?>
+                                <option value="<?= $m['id_guru'] ;?>"><?= $m['nama_lengkap'] ;?></option>
+                                <?php endforeach ;?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="kkm" name="kkm" placeholder="Masukkan nilai KKM.." required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="jp" name="jp" placeholder="Masukkan jam pelajaran.." required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -83,11 +100,19 @@
 
         <!-- Begin Modal Edit-->
         <?php
+            $q = $this->db->get('guru');     
+            $dist =  array();
+            if($q->num_rows()>0){       
+                foreach($q->result() as $row){ 
+                $dist[]= $row;
+                }
+            } 
+
             $a=0;
-            foreach ($role as $row) {
+            foreach ($mapel as $row) {
             $a++;
         ?>
-        <div class="modal fade" id="newEditMapelModal<?= $row['id_level']; ?>" tabindex="-1" role="dialog" aria-labelledby="newEditMapelModalLabel" aria-hidden="true">
+        <div class="modal fade" id="newEditMapelModal<?= $row['id_mapel']; ?>" tabindex="-1" role="dialog" aria-labelledby="newEditMapelModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -96,11 +121,32 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <form action="<?= base_url('menu/editLevel/') . $row['id_level']?>" method="POST">
-                    <input type="hidden" class="form-control" name="level_id" value="<?= $row['id_level'] ?>" readonly="">
+                <form action="<?= base_url('Master/editMapel/') . $row['id_mapel']?>" method="POST">
+                    <input type="hidden" class="form-control" name="level_id" value="<?= $row['id_mapel'] ?>" readonly="">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="levelname" name="levelname" value="<?= $row['level_name'] ?>">
+                            <input type="text" class="form-control" id="mapel" name="mapel" value="<?= $row['mata_pelajaran'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <select name="guru_id" id="guru_id" class="form-control">
+                                <?php        
+                                    // var_dump($row['guru_id'])  ;
+                                    // die;
+                                    if(count($dist)){
+                                        foreach($dist as $item){
+                                ?>  
+                                    <option value="<?php echo $item->id_guru; ?>" <?php if($item->id_guru == $row['guru_id']) echo 'selected';?>> <?php echo $item->nama_lengkap; ?></option>
+                                <?php
+                                        }
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="kkm" name="kkm" value="<?= $row['kkm'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="jp" name="jp" value="<?= $row['jam_pelajaran'] ?>">
                         </div>
                     </div>
                     <div class="modal-footer">

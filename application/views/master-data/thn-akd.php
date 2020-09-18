@@ -2,7 +2,7 @@
     
         <!-- Begin Main Content -->
         <div class="container-fluid">
-            <div class="flash-datae" data-flashdata="<?php echo $this->session->flashdata('msg'); ?>"></div>
+            <div class="flash-datatak" data-flashdata="<?php echo $this->session->flashdata('msg'); ?>"></div>
                 <?php if ($this->session->flashdata('msg')) : ?>
 
                 <?php endif;?>
@@ -22,24 +22,25 @@
                             <thead>
                             <tr>
                                 <th><center>No</center></th>
-                                <th>Level</th>
+                                <th>Tahun Akademik</th>
+                                <th>Semester</th>
+                                <th>Active</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach ($role as $r) : ?>
+                                <?php foreach ($takad as $r) : ?>
                                     <tr>
                                         <th scope="row"><center><?= $i; ?></center></th>
-                                        <td><?= $r['level_name']; ?></td>
+                                        <td><?= $r['tahun_akademik']; ?></td>
+                                        <td><?= $r['semester']; ?></td>
+                                        <td><?= $r['is_active']=="1" ? "Active": "Not Active"; ?></td>
                                         <td>
-                                            <a href="<?= base_url() ;?>Menu/accessLevel/<?= $r['id_level'] ;?>" class="btn btn-success btn-circle btn-sm">
-                                                <i class="fas fa-lock-open"></i>
-                                            </a>
-                                            <a data-toggle="modal" data-target="#newEditTakadModal<?= $r['id_level']; ?>" href="<?= base_url() ;?>Menu/editLevel/<?= $r['id_level'] ;?>" class="btn btn-warning btn-circle btn-sm">
+                                            <a data-toggle="modal" data-target="#newEditTakadModal<?= $r['id_takad']; ?>" href="<?= base_url() ;?>Master/editTakad/<?= $r['id_takad'] ;?>" class="btn btn-warning btn-circle btn-sm">
                                                 <i class="far fa-edit"></i>
                                             </a>
-                                            <a href="<?= base_url('') ;?>Menu/deleteLevel/<?= $r['id_level'] ;?>" class="btn btn-danger btn-circle btn-sm tbl-hapus" >
+                                            <a href="<?= base_url('') ;?>Master/deleteTakad/<?= $r['id_takad'] ;?>" class="btn btn-danger btn-circle btn-sm tbl-hapus" >
                                                 <i class="far fa-trash-alt"></i>
                                             </a>
                                         </td>
@@ -65,10 +66,32 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <form action="<?= base_url('menu/level')?>" method="POST">
+                <form action="<?= base_url('Master/tahunakademik')?>" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="levelname" name="levelname" placeholder="Masukkan nama level.." required>
+                            <input type="text" class="form-control" id="takad" name="takad" placeholder="Tahun Akademik..." required>
+                        </div>
+                        <div class="form-group">
+                            <select name="semester" id="semester" class="form-control" required>
+                                <option value="">-- Pilih Semester --</option>
+                                <option value="Ganjil">Ganjil</option>
+                                <option value="Genap">Genap</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                              <input type="date" class="form-control" name="mulai_takad"required>
+                            </div>
+                            <p style="padding-top: 7px">s/d</p>
+                            <div class="col">
+                              <input type="date" class="form-control" name="akhir_takad" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="is_active" name="is_active" value="1" checked>
+                                <label class="form-check-label" for="is_active">Active?</label>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -84,10 +107,10 @@
         <!-- Begin Modal Edit-->
         <?php
             $a=0;
-            foreach ($role as $row) {
+            foreach ($takad as $row) {
             $a++;
         ?>
-        <div class="modal fade" id="newEditTakadModal<?= $row['id_level']; ?>" tabindex="-1" role="dialog" aria-labelledby="newEditTakadModalLabel" aria-hidden="true">
+        <div class="modal fade" id="newEditTakadModal<?= $row['id_takad']; ?>" tabindex="-1" role="dialog" aria-labelledby="newEditTakadModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -96,11 +119,33 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <form action="<?= base_url('menu/editLevel/') . $row['id_level']?>" method="POST">
-                    <input type="hidden" class="form-control" name="level_id" value="<?= $row['id_level'] ?>" readonly="">
+                <form action="<?= base_url('Master/editTakad/') . $row['id_takad']?>" method="POST">
+                    <input type="hidden" class="form-control" name="level_id" value="<?= $row['id_takad'] ?>" readonly="">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="levelname" name="levelname" value="<?= $row['level_name'] ?>">
+                            <input type="text" class="form-control" id="takad" name="takad" value="<?= $row['tahun_akademik'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <select name="semester" id="semester" class="form-control" >
+                                <option value="">-- Pilih Semester --</option>
+                                <option value="Ganjil" <?php if($row['semester']=="Ganjil"){echo "selected";} ?>>Ganjil</option>
+                                <option value="Genap" <?php if($row['semester']=="Genap"){echo "selected";} ?>>Genap</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                              <input type="date" class="form-control" name="mulai_takad" value="<?= $row['mulai_takad'] ?>">
+                            </div>
+                            <p style="padding-top: 7px">s/d</p>
+                            <div class="col">
+                              <input type="date" class="form-control" name="akhir_takad"  value="<?= $row['akhir_takad'] ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="is_active" name="is_active" value="1" <?= $row['is_active']=="1" ? "checked": ""?>>
+                                <label class="form-check-label" for="is_active">Active?</label>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
