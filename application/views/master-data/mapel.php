@@ -12,7 +12,7 @@
                     <div class="card-header py-3 justify-content-between">
                         <div class="justify-content-between">
                             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#newAddMapelModal">
-                                <i class="fas fa-plus-circle" style="padding-right: 5px;"></i>Tambah Data Mata Pelajaran
+                                <i class="fas fa-plus-circle" style="padding-right: 5px;"></i>Add Data Mapel
                             </a>
                         </div>
                     </div>
