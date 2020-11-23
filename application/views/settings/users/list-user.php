@@ -12,7 +12,7 @@
               <div class="card-header py-3 justify-content-between">
                 <div class="justify-content-between">
                     <a href="<?= base_url('Settings/addUsers'); ?>" class="btn btn-primary">
-                        <i class="fas fa-plus-circle" style="padding-right: 5px;"></i>Add Data User
+                        <i class="fas fa-plus-circle" style="padding-right: 5px;"></i>Tambah Data User
                     </a>
                 </div>
               </div>

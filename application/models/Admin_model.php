@@ -20,7 +20,7 @@ class Admin_model extends CI_Model {
     }
     
     public function dataLog(){
-        $res = $this->db->count_all_results('log_activity');
+        $res = $this->db->count_all_results('log_attempts');
 		return $res;
     }
 

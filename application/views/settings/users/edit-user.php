@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="col-lg-6" style="padding-left: 32px;}">
+                    <div class="col-lg-7" style="padding-left: 32px;}">
                         <?php
                             $q =  $this->db->get('user_level');     
                             $dist =  array();
@@ -33,22 +33,22 @@
                             foreach ($users as $row) {
                             $a++;
                         ?>
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-3 col-form-label">Email<span style="color: red">*</span></label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" name="email" id="email" value="<?= $row['email'] ?>" required readonly>
+                                <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
+                                <div class="invalid-feedback">
+
+                                </div>
+                            </div>
+                        </div>
                         <form action="<?= base_url('Settings/updateUsers/') . $row['id']?>" method="POST">
                             <input type="hidden" class="form-control" name="id" value="<?= $row['id'] ?>" readonly="">
                             <div class="form-group row">
                                 <label for="name" class="col-sm-3 col-form-label">Nama Lengkap<span style="color: red">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="name" name="name" value="<?= $row['name'] ?>" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="email" class="col-sm-3 col-form-label">Email<span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    <input type="email" class="form-control" name="email" id="email" value="<?= $row['email'] ?>" required>
-                                    <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
-                                    <div class="invalid-feedback">
-
-                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -71,7 +71,7 @@
                                 <label for="level" class="col-sm-3 col-form-label">Level<span style="color: red">*</span></label>
                                 <div class="col-sm-9">
                                     <select name="level_id" id="level_id" class="form-control" required>
-                                        <option value="">-- Select Level --</option>
+                                        <option value="">-- Pilih Level --</option>
                                         <?php        
                                         // var_dump($row['menu_id'])  ;
                                         // die;
@@ -99,7 +99,7 @@
                                 </div>
                             </div>
                             <div class="form-group row justify-content-end">
-                                <div class="col-sm-9">
+                                <div class="col-sm-2">
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </div>

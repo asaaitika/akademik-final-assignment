@@ -7,12 +7,17 @@ class User extends CI_Controller {
         parent::__construct();
         
         check_logged();
+        $this->load->model('Admin_model');
     }
     
     // BEGIN DASHBOARD USER
     public function index(){
         $data['title'] = 'Dashboard';
+
+        $d = $this->Admin_model->dataLog();
+
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['data_log'] = $d;
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

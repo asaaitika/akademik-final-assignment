@@ -347,6 +347,9 @@ class Settings extends CI_Controller {
                             'date_created' => time()
             ];
             }
+            else if($active == '' || $new_image == ''){
+
+            }
             else{
                 $data = [
                             'email' => $this->input->post('email'),

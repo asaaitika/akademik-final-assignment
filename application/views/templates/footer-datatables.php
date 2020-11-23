@@ -55,6 +55,7 @@
 <!-- Page level custom scripts -->
 <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
 <script src="<?= base_url('assets/'); ?>js/dist/sweetalert2.all.min.js"></script>
+
 <script src="<?= base_url('assets/'); ?>js/dist/myscript.js"></script>
 
 <script src="<?= base_url('assets/'); ?>js/jquery.mask.min.js"></script>
@@ -85,31 +86,26 @@
 <script>
   $(document).ready( function () {
     $('#myTable').DataTable();
-} );
-</script>
 
-<script>  
-  $(document).ready(function(){
-      //1
-      $( '#kelas' ).mask('AAA-A');
+    //1
+    // $( '#kelas' ).mask('AAA-A');
 
-      //2
-      $( '#takad' ).mask('0000/0000');
+    //2
+    $( '#takad' ).mask('0000/0000');
 
-      //3
-      $( '#predikat' ).mask('A');
-      $( '#nil_awal' ).mask('00');
-      $( '#nil_akhir' ).mask('00');
+    //3
+    $( '#predikat' ).mask('A');
+    $( '#nil_awal' ).mask('00');
+    $( '#nil_akhir' ).mask('00');
 
-      //4
-      $( '#kkm' ).mask('00');
-      $( '#jp' ).mask('00');
-
-  });
+    //4
+    $( '#kkm' ).mask('00');
+    $( '#jp' ).mask('00');
+});
 </script>
 
 <script type="text/javascript">
-listItem = [];
+  listItem = [];
 
   $(document).ready(function() {
       $('#mapelTable').DataTable();
@@ -204,48 +200,44 @@ listItem = [];
         // console.log(listItem);
         $(this).showItem();
         $('#exampleModal').modal('toggle');
-    });
+      });
 
-    $.fn.showItem = function(){
-      var row  ='';
-      var no =1;
-        for(i=0; i<listItem.length; i++){
+      $.fn.showItem = function(){
+        var row  ='';
+        var no =1;
+          for(i=0; i<listItem.length; i++){
 
-          row +='<tr>';
-          row +='<td>'+listItem[i][2]+'</td>';
-          
-          row +='<td style="max-width: 15px;"><input type="number" class="uh-'+i+'" name="uh[]" value="1" onKeyup="$(this).hitung();"></td>';
-          row +='<td style="max-width: 15px;"><input type="number" class="uh-'+i+'" name="uh[]" value="1" onKeyup="$(this).hitung();"></td>';
-          row +='<td style="max-width: 15px;"><input type="number" class="uh-'+i+'" name="uh[]" value="1" onKeyup="$(this).hitung();"></td>';
-          row +='<td style="max-width: 15px;"><input type="number" class="uh-'+i+'" name="uh[]" value="1" onKeyup="$(this).hitung();"></td>';
-          row +='<td style="max-width: 15px;"><input type="number" class="uts-'+i+'" name="uts[]" value="1" onKeyup="$(this).hitung();"></td>';
-          row +='<td style="max-width: 15px;"><input type="number" class="uas-'+i+'" name="uas[]" value="1" onKeyup="$(this).hitung();"></td>';
-          
-          row +='<td><span class="total-'+i+'"> </span></td>';
-          row +='<td><span class="rata-'+i+'"> </span></td>';
-          row +='</tr>';
-          no++;
-        }
-      $('#itemSiswa').html(row);
-    }
+            row +='<tr>';
+            row +='<td>'+listItem[i][2]+'</td>';
+            
+            row +='<td style="max-width: 15px;"><input type="number" class="uh-'+i+'" name="uh[]" value="1" onKeyup="$(this).hitung();"></td>';
+            row +='<td style="max-width: 15px;"><input type="number" class="uh-'+i+'" name="uh[]" value="1" onKeyup="$(this).hitung();"></td>';
+            row +='<td style="max-width: 15px;"><input type="number" class="uh-'+i+'" name="uh[]" value="1" onKeyup="$(this).hitung();"></td>';
+            row +='<td style="max-width: 15px;"><input type="number" class="uh-'+i+'" name="uh[]" value="1" onKeyup="$(this).hitung();"></td>';
+            row +='<td style="max-width: 15px;"><input type="number" class="uts-'+i+'" name="uts[]" value="1" onKeyup="$(this).hitung();"></td>';
+            row +='<td style="max-width: 15px;"><input type="number" class="uas-'+i+'" name="uas[]" value="1" onKeyup="$(this).hitung();"></td>';
+            
+            row +='<td><span class="total-'+i+'"> </span></td>';
+            row +='<td><span class="rata-'+i+'"> </span></td>';
+            row +='</tr>';
+            no++;
+          }
+        $('#itemSiswa').html(row);
+      }
 
-    $.fn.hitung=function(){
-      var curClass = $(this).attr('class'); 
-      var arItem =  curClass.split('-');
-      var uh1 = $('.uh1-'+arItem[1]).val();
-      var uh2 = $('.uh2-'+arItem[1]).val();
-      var uh3 = $('.uh3-'+arItem[1]).val();
-      var uh4 = $('.uh4-'+arItem[1]).val();
-      var uts = $('.uts-'+arItem[1]).val();
-      var uas = $('.uas-'+arItem[1]).val();
-      var total = parseInt(qty)*parseInt(satuan);
-      $('.total-'+arItem[1]).html(total);
-    }
+      $.fn.hitung=function(){
+        var curClass = $(this).attr('class'); 
+        var arItem =  curClass.split('-');
+        var uh1 = $('.uh1-'+arItem[1]).val();
+        var uh2 = $('.uh2-'+arItem[1]).val();
+        var uh3 = $('.uh3-'+arItem[1]).val();
+        var uh4 = $('.uh4-'+arItem[1]).val();
+        var uts = $('.uts-'+arItem[1]).val();
+        var uas = $('.uas-'+arItem[1]).val();
+        var total = parseInt(qty)*parseInt(satuan);
+        $('.total-'+arItem[1]).html(total);
+      }
 
-  });
-
-
-  $(document).ready(function(){
       $('#btnProsesS').click(function(){
         $.ajax({
             url: "<?= base_url('Laporan/getList'); ?>",

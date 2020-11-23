@@ -10,15 +10,8 @@
             <!-- Page Heading -->
             <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
             <div class="card shadow mb-4 justify-content-between">
-               <div class="card-header py-3 justify-content-between">
-                   <div class="justify-content-between" >
-                        <div class="col-lg-6">
-                            <?= $this->session->flashdata('message') ;?>            
-                        </div>
-                    </div>
-                </div>
                 <div class="card-body">
-                    <div class="col-lg-6" style="padding-left: 32px;">
+                    <div class="col-lg-7" style="padding-left: 32px;">
                         <?= form_open_multipart('Admin/profile'); ?>
                         <form>
                             <!-- Begin Pesan Error -->
@@ -26,30 +19,30 @@
                             if(isset($psn)==TRUE)
                             {
                             ?>
-                            <div class="alert alert-danger" role="alert">
-                                <button type="button" class="close" data-dismiss="alert">
-                                <i class="fa fa-times-circle"></i>
-                                </button>
-                                <center>
-                                <h5> Peringatan </h5>
-                                <br>
-                                <?php echo $psn; ?>
-                                </center>
-                            </div>
+                                <div class="alert alert-danger" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">
+                                    <i class="fa fa-times-circle"></i>
+                                    </button>
+                                    <center>
+                                    <h5> Peringatan </h5>
+                                    <br>
+                                    <?php echo $psn; ?>
+                                    </center>
+                                </div>
                             <?php
                                 }
                             ?>
                         <!-- End Of Pesan Error -->
                             <div class="form-group row">
-                                <label for="email" class="col-sm-3 col-form-label">Email</label>
+                                <label for="email" class="col-sm-3 col-form-label">Email<span style="color: red">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" id="email" name="email" value="<?= $user['email'] ;?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="name" class="col-sm-3 col-form-label">Nama Lengkap</label>
+                                <label for="name" class="col-sm-3 col-form-label">Nama Lengkap<span style="color: red">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="name" name="name" value="<?= $user['name'] ;?>" >
+                                    <input type="text" class="form-control" id="name" name="name" value="<?= $user['name'] ;?>">
                                     <?= form_error('name', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                             </div>
@@ -92,7 +85,7 @@
                             </div>
 
                             <div class="form-group row justify-content-end">
-                                <div class="col-sm-9">
+                                <div class="col-sm-2">
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </div>

@@ -57,7 +57,7 @@
         <!-- Begin Modal Add-->
         <div class="modal fade" id="newAddPreNilModal" tabindex="-1" role="dialog" aria-labelledby="newAddPreNilModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="width: 110% !important">
                 <div class="modal-header">
                 <h5 class="modal-title" id="newAddPreNilModalLabel">Add Data Predikat Nilai</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -97,7 +97,7 @@
         ?>
         <div class="modal fade" id="newEditPreNilModal<?= $row['id_predikat']; ?>" tabindex="-1" role="dialog" aria-labelledby="newEditPreNilModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="width: 110% !important">
                 <div class="modal-header">
                 <h5 class="modal-title" id="newAddPreNilModalLabel">Edit Data Predikat Nilai</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -108,15 +108,15 @@
                     <input type="hidden" class="form-control" name="level_id" value="<?= $row['id_predikat'] ?>" readonly="">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="predikat" name="predikat" value="<?= $row['predikat'] ?>">
+                            <input type="text" class="form-control" id="predikat" name="predikat" value="<?= $row['predikat'] ?>" placeholder="Masukkan inisial predikat.." required>
                         </div>
                         <div class="form-row">
                             <div class="col">
-                              <input type="text" class="form-control" name="nil_awal" value="<?= $row['nil_awal'] ?>">
+                              <input type="text" class="form-control" name="nil_awal" value="<?= $row['nil_awal'] ?>" placeholder="Masukkan awal nilai interva..." required>
                             </div>
                             <p style="padding-top: 7px">≤ X ≤</p>
                             <div class="col">
-                              <input type="text" class="form-control" name="nil_akhir" value="<?= $row['nil_akhir'] ?>">
+                              <input type="text" class="form-control" name="nil_akhir" value="<?= $row['nil_akhir'] ?>" placeholder="Masukkan akhir nilai interva..." required>
                             </div>
                         </div>
                     </div>

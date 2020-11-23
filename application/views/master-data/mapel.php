@@ -35,9 +35,9 @@
                                     <tr>
                                         <th scope="row"><center><?= $i; ?></center></th>
                                         <td><?= $m['mata_pelajaran']; ?></td>
-                                        <td><?= $m['jam_pelajaran']; ?></td>
-                                        <td><?= $m['kkm']; ?></td>
                                         <td><?= $m['nama_lengkap']; ?></td>
+                                        <td><?= $m['kkm']; ?></td>
+                                        <td><?= $m['jam_pelajaran']; ?></td>
                                         <td>
                                             <a data-toggle="modal" data-target="#newEditMapelModal<?=  $m['id_mapel']; ?>" href="<?= base_url() ;?>Master/editMapel/<?= $m['id_mapel'] ;?>" class="btn btn-warning btn-circle btn-sm">
                                                 <i class="far fa-edit"></i>
@@ -125,10 +125,11 @@
                     <input type="hidden" class="form-control" name="level_id" value="<?= $row['id_mapel'] ?>" readonly="">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="mapel" name="mapel" value="<?= $row['mata_pelajaran'] ?>">
+                            <input type="text" class="form-control" id="mapel" name="mapel" value="<?= $row['mata_pelajaran'] ?>" placeholder="Masukkan judul mata pelajaran.." required>
                         </div>
                         <div class="form-group">
-                            <select name="guru_id" id="guru_id" class="form-control">
+                            <select name="guru_id" id="guru_id" class="form-control" required>
+                                <option value="">-- Pilih Pengajar --</option>
                                 <?php        
                                     // var_dump($row['guru_id'])  ;
                                     // die;
@@ -143,10 +144,10 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="kkm" name="kkm" value="<?= $row['kkm'] ?>">
+                            <input type="text" class="form-control" id="kkm" name="kkm" value="<?= $row['kkm'] ?>" placeholder="Masukkan nilai KKM.." required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="jp" name="jp" value="<?= $row['jam_pelajaran'] ?>">
+                            <input type="text" class="form-control" id="jp" name="jp" value="<?= $row['jam_pelajaran'] ?>" placeholder="Masukkan jam pelajaran.." required>
                         </div>
                     </div>
                     <div class="modal-footer">

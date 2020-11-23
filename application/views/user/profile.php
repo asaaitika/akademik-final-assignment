@@ -11,10 +11,9 @@
             <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
             <div class="card shadow mb-4 justify-content-between">
                 <div class="card-body">
-                    <div class="col-lg-6" style="padding-left: 32px;">
+                    <div class="col-lg-7" style="padding-left: 32px;">
                         <?= form_open_multipart('User/profile'); ?>
                         <form>
-
                             <!-- Begin Pesan Error -->
                                 <?php
                                 if(isset($psn)==TRUE)
@@ -35,13 +34,13 @@
                                 ?>
                             <!-- End Of Pesan Error -->
                             <div class="form-group row">
-                                <label for="email" class="col-sm-3 col-form-label">Email</label>
+                                <label for="email" class="col-sm-3 col-form-label">Email<span style="color: red">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" id="email" name="email" value="<?= $user['email'] ;?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="name" class="col-sm-3 col-form-label">Nama Lengkap</label>
+                                <label for="name" class="col-sm-3 col-form-label">Nama Lengkap<span style="color: red">*</span></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="name" name="name" value="<?= $user['name'] ;?>" >
                                     <?= form_error('name', '<small class="text-danger">', '</small>'); ?>
@@ -86,11 +85,11 @@
                             </div>
 
                             <div class="form-group row justify-content-end">
-                                <div class="col-sm-9">
+                                <div class="col-sm-2">
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </div>
-                      </form>
+                        </form>
                     </div>
                 </div>
               </div>

@@ -47,9 +47,14 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
+
+<!-- Page level custom scripts -->
 <script src="<?= base_url('assets/'); ?>js/dist/sweetalert2.all.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/dist/myscript.js"></script>
-<script src="<?php echo base_url('assets/login/js/toastr.min.js')?>"></script>
+
+<script src="<?= base_url('assets/'); ?>login/js/toastr.min.js"></script>
+
+<script src="<?= base_url('assets/'); ?>js/jquery.mask.min.js"></script>
 
 </body>
 
@@ -71,7 +76,7 @@
   });
 
   <?php if ($this->session->flashdata('psn')) { ?>
-        toastr.error("<?php echo $this->session->flashdata('psn');?>");
-    <?php } ?>
+      toastr.error("<?php echo $this->session->flashdata('psn');?>");
+  <?php } ?>
 </script>
 

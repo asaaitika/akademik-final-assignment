@@ -80,11 +80,11 @@
                         </div>
                         <div class="form-row">
                             <div class="col">
-                              <input type="date" class="form-control" name="mulai_takad"required>
+                              <input type="date" class="form-control" name="mulai_takad">
                             </div>
                             <p style="padding-top: 7px">s/d</p>
                             <div class="col">
-                              <input type="date" class="form-control" name="akhir_takad" required>
+                              <input type="date" class="form-control" name="akhir_takad">
                             </div>
                         </div>
                         <div class="form-group">
@@ -123,10 +123,10 @@
                     <input type="hidden" class="form-control" name="level_id" value="<?= $row['id_takad'] ?>" readonly="">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="takad" name="takad" value="<?= $row['tahun_akademik'] ?>">
+                            <input type="text" class="form-control" id="takad" name="takad" value="<?= $row['tahun_akademik'] ?>" placeholder="Tahun Akademik..." required>
                         </div>
                         <div class="form-group">
-                            <select name="semester" id="semester" class="form-control" >
+                            <select name="semester" id="semester" class="form-control" required>
                                 <option value="">-- Pilih Semester --</option>
                                 <option value="Ganjil" <?php if($row['semester']=="Ganjil"){echo "selected";} ?>>Ganjil</option>
                                 <option value="Genap" <?php if($row['semester']=="Genap"){echo "selected";} ?>>Genap</option>

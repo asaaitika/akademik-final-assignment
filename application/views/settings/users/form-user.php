@@ -19,15 +19,9 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="col-lg-6" style="padding-left: 32px;}">
+                    <div class="col-lg-7" style="padding-left: 32px;}">
                         <?= form_open_multipart('Settings/addUsers'); ?>
                         <form>
-                            <div class="form-group row">
-                                <label for="name" class="col-sm-3 col-form-label">Nama Lengkap<span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="name" name="name" required>
-                                </div>
-                            </div>
                             <div class="form-group row">
                                 <label for="email" class="col-sm-3 col-form-label">Email<span style="color: red">*</span></label>
                                 <div class="col-sm-9">
@@ -39,26 +33,25 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="name" class="col-sm-3 col-form-label">Nama Lengkap<span style="color: red">*</span></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="picture" class="col-sm-3 col-form-label">Foto Profil</label>
                                 <div class="col-sm-9">
-                                    <!--<div class="row">
-                                        <div class="col-sm-3">
-                                            <img class="img-thumbnail" style="margin-left: 11px">
-                                        </div>-->
-                                        <div class="col-sm-9">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="image" name="image" >
-                                                <label class="custom-file-label" for="image">Choose file</label>
-                                            </div>
-                                        </div>
-                                    <!--</div>-->
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="image" name="image" >
+                                        <label class="custom-file-label" for="image">Choose file</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="level" class="col-sm-3 col-form-label">Level<span style="color: red">*</span></label>
                                 <div class="col-sm-9">
                                     <select name="level_id" id="level_id" class="form-control" required>
-                                        <option value="">-- Select Level --</option>
+                                        <option value="">-- Pilih Level --</option>
                                         <?php foreach($level as $l) :?>
                                         <option value="<?= $l['id_level'] ;?>"><?= $l['level_name'] ;?></option>
                                         <?php endforeach ;?>
@@ -90,7 +83,7 @@
                             </div>
 
                             <div class="form-group row justify-content-end">
-                                <div class="col-sm-9">
+                                <div class="col-sm-2.6">
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </div>

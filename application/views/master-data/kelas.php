@@ -107,10 +107,10 @@
                     <input type="hidden" class="form-control" name="level_id" value="<?= $row['id_kelas'] ?>" readonly="">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="kelas" name="kelas" value="<?= $row['kelas'] ?>">
+                            <input type="text" class="form-control" id="kelas" name="kelas" value="<?= $row['kelas'] ?>"  placeholder="Masukkan kelas..." required>
                         </div>
                         <div class="form-group">
-                            <select name="tingkat" id="tingkat" class="form-control">
+                            <select name="tingkat" id="tingkat" class="form-control" required>
                                 <option value="">-- Pilih Tingkat --</option>
                                 <option value="7" <?php if($row['tingkat']=="7"){echo "selected";} ?>>7</option>
                                 <option value="8" <?php if($row['tingkat']=="8"){echo "selected";} ?>>8</option>
